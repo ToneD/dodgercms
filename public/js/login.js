@@ -20,6 +20,7 @@ $(function() {
   function autofill() {
     $('#login-form-access-key').val(localStorage.getItem('dodgercms-access-key-id') || '');
     $('#login-form-access-secret').val(localStorage.getItem('dodgercms-secret-access-key') || '');
+    $('#login-form-region').val(localStorage.getItem('dodgercms-region') || '');
     $('#login-form-data-bucket').val(localStorage.getItem('dodgercms-data-bucket') || '');
     $('#login-form-assets-bucket').val(localStorage.getItem('dodgercms-assets-bucket') || '');
     $('#login-form-site-bucket').val(localStorage.getItem('dodgercms-site-bucket') || '');
@@ -32,17 +33,19 @@ $(function() {
 
     var accessKey = $.trim($('#login-form-access-key').val());
     var accessSecret = $.trim($('#login-form-access-secret').val());
+    var region = $.trim($('#login-form-region').val());
     var dataBucket = $.trim($('#login-form-data-bucket').val());
     var assetsBucket = $.trim($('#login-form-assets-bucket').val());
     var siteBucket = $.trim($('#login-form-site-bucket').val());
     var remember = $('#login-remember').is(':checked');
 
     // Validate the form fields
-    if (accessKey === '' || 
-      accessSecret === '' || 
-      dataBucket === '' || 
+    if (accessKey === '' ||
+      accessSecret === '' ||
+      region === '' ||
+      dataBucket === '' ||
       assetsBucket === '' ||
-      siteBucket === '') 
+      siteBucket === '')
     {
       alert('All fields are required.');
       return;
@@ -54,12 +57,13 @@ $(function() {
       siteBucket: siteBucket,
       accessKey: accessKey,
       accessSecret: accessSecret,
+      region: region,
       remember: remember
     };
-    
+
     // Block the page
-    $.blockUI({ 
-      css: { 
+    $.blockUI({
+      css: {
         'border': 'none',
         'font-size': '90%',
         'padding': '15px',
@@ -69,7 +73,7 @@ $(function() {
         'opacity': 0.5,
         'color': '#fff'
       }
-    }); 
+    });
 
     dodgercms.auth.login(params, function(err, data) {
       // Remove the page block
