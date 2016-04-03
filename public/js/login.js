@@ -22,8 +22,10 @@ $(function() {
     $('#login-form-access-secret').val(localStorage.getItem('dodgercms-secret-access-key') || '');
     $('#login-form-region').val(localStorage.getItem('dodgercms-region') || '');
     $('#login-form-data-bucket').val(localStorage.getItem('dodgercms-data-bucket') || '');
-    $('#login-form-assets-bucket').val(localStorage.getItem('dodgercms-assets-bucket') || '');
     $('#login-form-site-bucket').val(localStorage.getItem('dodgercms-site-bucket') || '');
+    $('#login-form-assets-bucket').val(localStorage.getItem('dodgercms-assets-bucket') || '');
+    $('#login-form-site-path').val(localStorage.getItem('dodgercms-site-path') || '');
+    $('#login-form-assets-path').val(localStorage.getItem('dodgercms-assets-path') || '');
   }
 
   // Event handler for the login submit button
@@ -35,8 +37,10 @@ $(function() {
     var accessSecret = $.trim($('#login-form-access-secret').val());
     var region = $.trim($('#login-form-region').val());
     var dataBucket = $.trim($('#login-form-data-bucket').val());
-    var assetsBucket = $.trim($('#login-form-assets-bucket').val());
     var siteBucket = $.trim($('#login-form-site-bucket').val());
+    var assetsBucket = $.trim($('#login-form-assets-bucket').val());
+    var sitePath = $.trim($('#login-form-site-path').val());
+    var assetsPath = $.trim($('#login-form-assets-path').val());
     var remember = $('#login-remember').is(':checked');
 
     // Validate the form fields
@@ -55,6 +59,8 @@ $(function() {
       dataBucket : dataBucket,
       assetsBucket: assetsBucket,
       siteBucket: siteBucket,
+      assetsPath: assetsPath,
+      sitePath: sitePath,
       accessKey: accessKey,
       accessSecret: accessSecret,
       region: region,

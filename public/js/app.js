@@ -16,6 +16,7 @@ $(function() {
   var ASSETS_BUCKET = localStorage.getItem('dodgercms-assets-bucket');
   var SITE_BUCKET = localStorage.getItem('dodgercms-site-bucket');
   var SITE_ENDPOINT = localStorage.getItem('dodgercms-site-endpoint');
+  var ASSETS_PATH = localStorage.getItem('dodgercms-assets-path');
   var CONTENT_TYPE = 'text/plain; charset=UTF-8';
   var S3_ENDPOINT = 's3-' + localStorage.getItem('dodgercms-region') + '.amazonaws.com';
 
@@ -1018,7 +1019,9 @@ $(function() {
         var v = content.val();
         var textBefore = v.substring(0,  cursorPosStart );
         var textAfter = v.substring( cursorPosEnd, v.length );
-        content.val(textBefore + '![' + file.name + ']' + '(' + link + ')' + textAfter);
+        var imageLink = (ASSETS_PATH === '') ? link : ASSETS_PATH + '/' + file.name.replace(/\s|\\|\/|\(|\)/g,'-');
+
+        content.val(textBefore + '![' + file.name + ']' + '(' + imageLink + ')' + textAfter);
       }
     });
   });
