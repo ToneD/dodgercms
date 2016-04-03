@@ -1,20 +1,20 @@
-describe('getFolders()', function() {
-  it('should return the correct list of folders', function() {
-    var objects = [
-      { Key: '/' },
-      { Key: 'test/' },
-      { Key: 'test/test/' },
-      { Key: 'test/a/b' },
-      { Key: 'test' },
-    ];
-    chai.expect(dodgercms.utils.getFolders(objects)).to.have.members(['/', 'test/', 'test/test/', 'test/a/']);
-  });
+// describe('getFolders()', function() {
+//   it('should return the correct list of folders', function() {
+//     var objects = [
+//       { Key: '/' },
+//       { Key: 'test/' },
+//       { Key: 'test/test/' },
+//       { Key: 'test/a/b' },
+//       { Key: 'test' },
+//     ];
+//     chai.expect(dodgercms.utils.getFolders(objects)).to.have.members(['/', 'test/', 'test/test/', 'test/a/']);
+//   });
 
-  it('should return the root folder if the array is empty', function() {
-    var objects = [];
-    chai.expect(dodgercms.utils.getFolders(objects)).to.have.members(['/']);
-  });
-});
+//   it('should return the root folder if the array is empty', function() {
+//     var objects = [];
+//     chai.expect(dodgercms.utils.getFolders(objects)).to.have.members(['/']);
+//   });
+// });
 
 describe('newFolder()', function() {
   before(function(done) {
