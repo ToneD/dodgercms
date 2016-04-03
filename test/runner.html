@@ -22,14 +22,14 @@
   <script src="../lib/utils.js"></script>
   <script src="../lib/s3.js"></script>
 
-  <!-- Tests -->
-  <script src="utils-test.js"></script>
-  <script src="s3-test.js"></script>
-
   <script>
     mocha.setup('bdd')
     mocha.reporter('html');
   </script>
+
+  <!-- Tests -->
+  <script src="utils-test.js"></script>
+  <script src="s3-test.js"></script>
 
   <script>
     // Only tests run in real browser, injected script run if options.run == true
